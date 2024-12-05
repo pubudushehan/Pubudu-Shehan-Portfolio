@@ -3,14 +3,16 @@ import CVModal from './components/CVModal';
 import ThemeToggle from './components/ThemeToggle';
 import Services from './components/Services';
 import AnimatedSection from './components/AnimatedSection';
-import profileImage from '../src/assets/Profile.jpg';
+import profileImage from '../src/assets/Profile1.jpg.png';
 import Resume from './components/Resume';
 import Work from './components/Work';
 import Contact from './components/Contact';
+import CV from './components/CV';
 
 function App() {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     // Check if user has a theme preference
@@ -28,6 +30,35 @@ function App() {
     }
   }, [isDark]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'services', 'resume', 'work', 'contact'];
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const getNavLinkClasses = (section) => {
+    const baseClasses = "px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105";
+    const inactiveClasses = "text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-900/20";
+    const activeClasses = "text-violet-600 dark:text-violet-400 bg-violet-50 dark:bg-violet-900/20";
+    
+    return `${baseClasses} ${activeSection === section ? activeClasses : inactiveClasses}`;
+  };
+
   const toggleTheme = () => {
     setIsDark(!isDark);
   };
@@ -35,26 +66,31 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-gray-900 dark:to-slate-900 transition-colors duration-300">
       {/* Navigation */}
-      <nav className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <h1 className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 text-transparent bg-clip-text">
-            Pubudu Shehan
-          </h1>
-          <div className="hidden md:flex items-center space-x-6">
-            <a href="#home" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Home</a>
-            <a href="#services" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Services</a>
-            <a href="#resume" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Resume</a>
-            <a href="#work" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Work</a>
-            <a href="#contact" className="text-slate-700 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">Contact</a>
-            <a href="#contact" className="bg-violet-600 text-white px-5 py-2 rounded-full hover:bg-violet-700 transition">
-              Hire Me
+      <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-200/30 dark:border-gray-700/30 shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.3)]">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-violet-500/5 before:via-transparent before:to-indigo-500/5 before:rounded-xl before:opacity-40 before:-z-10">
+            <a 
+              href="#home"
+              className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 text-transparent bg-clip-text hover:from-violet-700 hover:to-indigo-700 dark:hover:from-violet-300 dark:hover:to-indigo-300 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            >
+              Pubudu Shehan
             </a>
+            <div className="hidden md:flex items-center space-x-1">
+              <a href="#home" className={getNavLinkClasses('home')}>Home</a>
+              <a href="#services" className={getNavLinkClasses('services')}>Services</a>
+              <a href="#resume" className={getNavLinkClasses('resume')}>Resume</a>
+              <a href="#work" className={getNavLinkClasses('work')}>Work</a>
+              <a href="#contact" className={getNavLinkClasses('contact')}>Contact</a>
+              <a href="#contact" className="ml-4 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white px-6 py-2.5 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-[0_8px_30px_rgb(124,58,237,0.12)] dark:hover:shadow-[0_8px_30px_rgb(124,58,237,0.24)] relative before:absolute before:inset-0 before:bg-white/10 before:rounded-lg before:opacity-0 hover:before:opacity-100 before:transition-opacity">
+                Hire Me
+              </a>
+            </div>
+            <button className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-900/20 transition-all duration-300">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
-          <button className="md:hidden text-gray-700">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
         </div>
       </nav>
 
@@ -79,14 +115,10 @@ function App() {
                 </div>
 
                 {/* Quick Info */}
-                <div className="grid grid-cols-2 gap-4 py-4">
+                <div className="grid grid-cols-1 gap-4 py-4">
                   <div>
                     <h3 className="font-semibold text-slate-800 dark:text-slate-200">Location</h3>
                     <p className="text-slate-600 dark:text-slate-300">Colombo, Sri Lanka</p>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-800 dark:text-slate-200">Experience</h3>
-                    <p className="text-slate-600 dark:text-slate-300">1+ Years</p>
                   </div>
                   <div>
                     <h3 className="font-semibold text-slate-800 dark:text-slate-200">Email</h3>
@@ -123,7 +155,7 @@ function App() {
                         <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd"/>
                       </svg>
                     </a>
-                    <a href="https://vercel.com/your-username" target="_blank" rel="noopener noreferrer" 
+                    <a href="https://vercel.com/pubudu-shehans-projects" target="_blank" rel="noopener noreferrer" 
                       className="text-slate-600 dark:text-slate-300 hover:text-violet-600 dark:hover:text-violet-400 transition">
                       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M24 22.525H0l12-21.05 12 21.05z" />
@@ -142,13 +174,25 @@ function App() {
 
             {/* Right Column - Image */}
             <AnimatedSection delay={400} animation="fade-left">
-              <div className="relative">
-                <div className="absolute inset-0 bg-violet-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-                <img 
-                  src={profileImage} 
-                  alt="Pubudu Shehan" 
-                  className="relative rounded-2xl shadow-2xl w-full max-w-lg mx-auto hover:scale-105 transition-transform duration-500"
-                />
+              <div className="relative w-[350px] h-[450px] mx-auto">
+                {/* Decorative elements */}
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-[2rem] blur opacity-30 animate-pulse group-hover:opacity-40 transition duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-indigo-600/20 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                {/* Main image container */}
+                <div className="relative bg-white dark:bg-gray-800 rounded-[2rem] p-2 shadow-2xl group h-full">
+                  <div className="overflow-hidden rounded-[1.7rem] h-full">
+                    <img 
+                      src={profileImage} 
+                      alt="Pubudu Shehan" 
+                      className="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  
+                  {/* Decorative dots */}
+                  <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-full blur-xl opacity-20 animate-pulse"></div>
+                  <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-full blur-xl opacity-20 animate-pulse delay-100"></div>
+                </div>
               </div>
             </AnimatedSection>
           </div>
@@ -167,7 +211,7 @@ function App() {
               </div>
               <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
                 <h4 className="font-semibold text-gray-800 dark:text-white">Teaching</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">ICT, Programming, Web Tech</p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">ICT, Programming</p>
               </div>
               <div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
                 <h4 className="font-semibold text-gray-800 dark:text-white">Database</h4>
@@ -200,6 +244,16 @@ function App() {
 
       {/* Add ThemeToggle component */}
       <ThemeToggle isDark={isDark} toggle={toggleTheme} />
+
+      {/* CV Component */}
+      {isCVModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+            <button onClick={() => setIsCVModalOpen(false)} className="text-red-500">Close</button>
+            <CV />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

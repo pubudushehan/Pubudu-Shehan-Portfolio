@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AnimatedSection from './AnimatedSection';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -16,14 +17,26 @@ function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Add your form submission logic here
-    // Example: Send to an API endpoint or email service
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'pubudushehankarunarathna@gmail.com'
+      };
+
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        templateParams,
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      );
+
       setSubmitStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
+      console.error('Error sending email:', error);
       setSubmitStatus('error');
     }
     setIsSubmitting(false);
@@ -114,34 +127,34 @@ function Contact() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Contact Info */}
           <AnimatedSection animation="fade-right">
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <AnimatedSection key={index} delay={index * 200} animation="fade-up">
-                  <div 
-                    className="flex items-start space-x-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
-                  >
-                    <div className="flex-shrink-0 bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg text-blue-600 dark:text-blue-400">
-                      {info.icon}
+            <div className="space-y-6 h-full flex flex-col">
+              <div className="flex-grow space-y-6">
+                {contactInfo.map((info, index) => (
+                  <AnimatedSection key={index} delay={index * 200} animation="fade-up">
+                    <div className="flex items-start space-x-4 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                      <div className="flex-shrink-0 bg-blue-100 dark:bg-blue-900/30 p-3 rounded-lg text-blue-600 dark:text-blue-400">
+                        {info.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-800 dark:text-white mb-1">
+                          {info.title}
+                        </h3>
+                        <p className="text-gray-600 dark:text-gray-300">
+                          {info.value}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-800 dark:text-white mb-1">
-                        {info.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300">
-                        {info.value}
-                      </p>
-                    </div>
-                  </div>
-                </AnimatedSection>
-              ))}
+                  </AnimatedSection>
+                ))}
+              </div>
 
               {/* Social Links */}
               <AnimatedSection delay={400} animation="fade-up">
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg mt-auto">
                   <h3 className="font-semibold text-gray-800 dark:text-white mb-4">
                     Connect With Me
                   </h3>
-                  <div className="flex items-center space-x-4">
+                  <div className="flex flex-wrap gap-4">
                     {socialLinks.map((social, index) => (
                       <a
                         key={index}
@@ -162,7 +175,7 @@ function Contact() {
 
           {/* Contact Form */}
           <AnimatedSection animation="fade-left" delay={200}>
-            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+            <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg h-full">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
