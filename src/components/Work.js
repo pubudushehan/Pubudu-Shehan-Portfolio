@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import AnimatedSection from './AnimatedSection';
+import portfolioImage from '../assets/Portfolio.jpg';
+import QuizImage from '../assets/Test Genius.png';
+import electroCombatImage from '../assets/Electro_Combat.jpg';
+import techCommitteeImage from '../assets/Headshot.jpg';
 
 function Work() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -14,13 +18,13 @@ function Work() {
   const workItems = [
     {
       category: 'projects',
-      year: '2023',
+      year: '2024',
       title: 'Portfolio Website',
       description: 'Modern portfolio website built with React and Tailwind CSS',
       technologies: ['React', 'Tailwind CSS', 'JavaScript'],
       githubLink: 'https://github.com/yourusername/portfolio',
       liveLink: 'https://your-portfolio.com',
-      image: '/images/portfolio.jpg',
+      image: portfolioImage,
       highlights: [
         'Responsive design',
         'Dark mode support',
@@ -29,20 +33,47 @@ function Work() {
     },
     {
       category: 'projects',
-      year: '2023',
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with admin dashboard',
-      technologies: ['Next.js', 'Node.js', 'MongoDB'],
+      year: '2024',
+      title: 'Test Genius Quiz Web Site',
+      description: 'Full-stack Quiz app for A/L Students',
+      technologies: ['React', 'Tailwind CSS', 'Next.js', 'Node.js', 'MongoDB'],
       githubLink: 'https://github.com/yourusername/ecommerce',
       liveLink: 'https://your-ecommerce.com',
-      image: '/images/ecommerce.jpg',
+      image: QuizImage,
       highlights: [
-        'Payment integration',
-        'Inventory management',
-        'Analytics dashboard'
+        'Real time Quiz',
+        'Progress Tracker',
+        'Responsive Design'
       ]
     },
-    // Add more projects...
+    {
+      category: 'volunteer',
+      year: '2024',
+      title: 'Secretary of Technology Sub-Committee',
+      description: 'Leading technology initiatives and organizing tech-related events for the university community.',
+      technologies: ['Event Management', 'Technical Leadership', 'Team Coordination'],
+      image: techCommitteeImage,
+      highlights: [
+        'Organizing technical workshops and seminars',
+        'Managing technical resources and documentation',
+        'Coordinate the Headshot Gaming Competition 2024',
+        'Planning and executing technology-driven events'
+      ]
+    },
+    {
+      category: 'volunteer',
+      year: '2024',
+      title: 'Referee at Electro Combat 2024',
+      description: 'Served as a referee in the Electro Combat 2024 competition at the University of Sri Jayawardenapura.',
+      technologies: ['Event Management', 'Competition Rules', 'Fair Play'],
+      image: electroCombatImage,
+      highlights: [
+        'Ensuring fair play and competition rules',
+        'Evaluating participant performances',
+        'Maintaining competition standards',
+        'Contributing to event organization'
+      ]
+    }
   ];
 
   const filteredWork = selectedCategory === 'all' 
@@ -52,70 +83,40 @@ function Work() {
   const renderWorkCard = (item, index) => {
     return (
       <AnimatedSection animation="fade-up" delay={index * 200}>
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300 h-[600px] flex flex-col">
           {/* Project Image with Overlay */}
-          <div className="relative h-48 overflow-hidden">
+          <div className="relative h-48 flex-shrink-0">
             <img 
               src={item.image} 
               alt={item.title}
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
-              <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                {/* Project Links */}
-                <div className="flex space-x-3 mb-4">
-                  {item.githubLink && (
-                    <a
-                      href={item.githubLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-4 py-2 rounded-full flex items-center space-x-2 text-sm transition-all duration-300"
-                    >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                      </svg>
-                      <span>GitHub</span>
-                    </a>
-                  )}
-                  {item.liveLink && (
-                    <a
-                      href={item.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full flex items-center space-x-2 text-sm transition-all duration-300"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                      <span>Live Demo</span>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
           </div>
 
-          {/* Project Details */}
-          <div className="p-6">
-            <div className="mb-4">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+          {/* Content Section */}
+          <div className="p-6 flex flex-col flex-grow">
+            {/* Title and Year Badge */}
+            <div className="flex justify-between items-start gap-4 mb-4">
+              <h3 className="text-xl font-bold text-gray-800 dark:text-white line-clamp-2">
                 {item.title}
               </h3>
-              <p className="text-sm text-blue-600 dark:text-blue-400">
+              <span className="flex-shrink-0 text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full whitespace-nowrap">
                 {item.year}
-              </p>
+              </span>
             </div>
             
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            {/* Description */}
+            <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
               {item.description}
             </p>
 
             {/* Technologies */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {item.technologies.map((tech, index) => (
-                <span 
-                  key={index}
-                  className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm text-gray-700 dark:text-gray-300"
+            <div className="flex flex-wrap gap-2 mb-6">
+              {item.technologies.map((tech, techIndex) => (
+                <span
+                  key={techIndex}
+                  className="text-sm bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 px-3 py-1 rounded-full"
                 >
                   {tech}
                 </span>
@@ -123,19 +124,33 @@ function Work() {
             </div>
 
             {/* Highlights */}
-            <ul className="space-y-2">
-              {item.highlights.map((highlight, index) => (
-                <li 
-                  key={index}
-                  className="flex items-start text-gray-600 dark:text-gray-300"
+            <div className="mt-auto space-y-3">
+              {item.highlights.map((highlight, highlightIndex) => (
+                <div 
+                  key={highlightIndex}
+                  className="flex items-start space-x-3 group/item"
                 >
-                  <svg className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {highlight}
-                </li>
+                  <span className="flex-shrink-0 w-5 h-5 mt-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                    <svg 
+                      className="w-3 h-3 text-blue-500" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M5 13l4 4L19 7" 
+                      />
+                    </svg>
+                  </span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300 group-hover/item:text-blue-500 transition-colors duration-300">
+                    {highlight}
+                  </span>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </AnimatedSection>
@@ -143,7 +158,7 @@ function Work() {
   };
 
   return (
-    <section id="work" className="py-20">
+    <section id="work" className="py-20 bg-gray-50 dark:bg-gray-800/50">
       <div className="container mx-auto px-4">
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
@@ -176,7 +191,7 @@ function Work() {
         {/* Work Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredWork.map((item, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative h-full">
               {renderWorkCard(item, index)}
             </div>
           ))}

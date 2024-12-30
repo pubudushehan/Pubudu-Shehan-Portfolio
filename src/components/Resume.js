@@ -55,47 +55,65 @@ function Resume() {
 
   const education = [
     {
-      degree: "Master of Science in Computer Science",
-      school: "University Name",
-      year: "2018 - 2020",
-      description: "Specialized in Machine Learning and Artificial Intelligence. Graduated with distinction.",
+      degree: "Bachelor of Software Engineering Technology",
+      school: "University of Sri Jayawardenapura",
+      year: "2022 - 2026",
+      description: "Undergraduate student of Software Engineering Technology",
+      achievements: [
+        "Third Year Undergraduate",
+        "Secretary of Technology Sub-Committee"
+      ]
     },
     {
-      degree: "Bachelor of Science in Software Engineering",
-      school: "University Name",
-      year: "2014 - 2018",
-      description: "First Class Honours. President of the Computing Society.",
+      degree: "A/L Examination",
+      school: "Kuliyapitiya Central College",
+      year: "2018 - 2020",
+      description: "Learned the basics of Information & Communication Technology",
+      achievements: [
+        "ICT Stream",
+        "Sub President of Mediation Board"
+      ]
+    },
+    {
+      degree: "O/L Examination",
+      school: "NK/ Diwullegoda M.V",
+      year: "2013 - 2017",
+      description: "Completed secondary education with excellent results",
+      achievements: [
+        "School Prefect",
+        "Member of ICT Society"
+      ]
     }
   ];
 
   const experience = [
     {
-      position: "Senior Software Engineer",
-      company: "Tech Company Name",
-      year: "2020 - Present",
+      position: "Test Genius Quiz Web Site",
+      company: "Full-stack Quiz App",
+      year: "2024",
       responsibilities: [
-        "Led development of enterprise-scale web applications using React and Node.js",
-        "Mentored junior developers and conducted code reviews",
-        "Implemented CI/CD pipelines and improved deployment processes",
-        "Reduced application load time by 40% through optimization"
+        "Developed a comprehensive quiz platform for A/L students using React and Node.js",
+        "Implemented real-time quiz functionality and progress tracking system",
+        "Created responsive design using Tailwind CSS for optimal user experience",
+        "Integrated MongoDB for efficient data management and user progress storage"
       ]
     },
     {
-      position: "Software Developer",
-      company: "Another Company",
-      year: "2018 - 2020",
+      position: "Portfolio Website",
+      company: "Personal Project",
+      year: "2024",
       responsibilities: [
-        "Developed and maintained multiple client-facing applications",
-        "Collaborated with UX team to implement responsive designs",
-        "Integrated third-party APIs and services",
-        "Participated in agile development processes"
+        "Designed and developed a modern portfolio website using React and Tailwind CSS",
+        "Implemented dark mode support and smooth animations for enhanced user experience",
+        "Created responsive layouts that work seamlessly across all devices",
+        "Integrated email contact form functionality using EmailJS"
       ]
     }
   ];
 
   const skillCategories = [
     {
-      name: "Frontend",
+      name: "Frontend Development",
       skills: [
         { name: "React", icon: <FaReact /> },
         { name: "Next.js", icon: <SiNextdotjs /> },
@@ -104,87 +122,126 @@ function Resume() {
       ]
     },
     {
-      name: "Backend",
+      name: "Backend Development",
       skills: [
         { name: "Node.js", icon: <FaNodeJs /> },
-        { name: "Python", icon: <FaPython /> },
-        { name: "Java", icon: <FaJava /> }
-      ]
-    },
-    {
-      name: "Database",
-      skills: [
+        { name: "Express.js", icon: <SiNextdotjs /> },
         { name: "MongoDB", icon: <SiMongodb /> },
-        { name: "PostgreSQL", icon: <SiPostgresql /> },
-        { name: "MySQL", icon: <SiMysql /> },
-        { name: "Redis", icon: <SiRedis /> }
+        { name: "MySQL", icon: <SiMysql /> }
       ]
     },
     {
-      name: "DevOps",
+      name: "Programming Languages",
       skills: [
-        { name: "Docker", icon: <FaDocker /> },
-        { name: "AWS", icon: <FaAws /> },
-        { name: "Git", icon: <FaGithub /> }
+        { name: "JavaScript", icon: <FaNodeJs /> },
+        { name: "Python", icon: <FaPython /> },
+        { name: "Java", icon: <FaJava /> },
+        { name: "TypeScript", icon: <SiTypescript /> }
       ]
     },
     {
-      name: "Mobile",
+      name: "Development Tools",
       skills: [
-        { name: "React Native", icon: <FaReact /> },
-        { name: "Flutter", icon: <SiFlutter /> }
+        { name: "Git", icon: <FaGithub /> },
+        { name: "VS Code", icon: <SiNextdotjs /> },
+        { name: "Postman", icon: <SiPostgresql /> },
+        { name: "Docker", icon: <FaDocker /> }
       ]
     },
     {
-      name: "AI/ML",
+      name: "Design Tools",
       skills: [
-        { name: "TensorFlow", icon: <SiTensorflow /> },
-        { name: "PyTorch", icon: <SiPytorch /> },
-        { name: "Google Colab", icon: <SiGooglecolab /> }
+        { name: "Figma", icon: <SiNextdotjs /> },
+        { name: "Adobe XD", icon: <SiNextdotjs /> },
+        { name: "Photoshop", icon: <SiNextdotjs /> },
+        { name: "Illustrator", icon: <SiNextdotjs /> }
+      ]
+    },
+    {
+      name: "Other Skills",
+      skills: [
+        { name: "RESTful APIs", icon: <FaNodeJs /> },
+        { name: "Responsive Design", icon: <SiTailwindcss /> },
+        { name: "UI/UX Design", icon: <SiNextdotjs /> },
+        { name: "Problem Solving", icon: <FaBrain /> }
       ]
     }
   ];
 
   const aboutMe = {
-    description: "I am a passionate software developer with over 5 years of experience in creating innovative digital solutions. My journey in technology has been driven by a constant desire to learn and create meaningful impact through code.",
+    description: "I am an undergraduate student pursuing a Bachelor's degree in Software Engineering Technology at the University of Sri Jayawardenapura. I am passionate about web development and creating innovative solutions that make a positive impact. Currently focusing on full-stack development and exploring machine learning technologies.",
     highlights: [
-      "Full-stack developer specializing in modern web technologies",
-      "Experienced in building scalable applications and microservices",
-      "Passionate about teaching and mentoring junior developers",
-      "Committed to writing clean, maintainable, and efficient code"
+      "Full-stack developer with expertise in React and Node.js",
+      "Created Test Genius Quiz platform for A/L students",
+      "Skilled in modern web technologies and responsive design",
+      "Strong foundation in software engineering principles"
     ],
-    interests: ["Open Source", "AI/ML", "Teaching", "Tech Writing"]
+    interests: [
+      "Web Development",
+      "Machine Learning",
+      "UI/UX Design",
+      "Teaching"
+    ]
   };
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 'about':
         return (
-          <AnimatedSection className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-              {aboutMe.description}
-            </p>
-            <div className="space-y-6">
-              <div>
-                <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Highlights</h4>
-                <ul className="space-y-2">
-                  {aboutMe.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-center text-gray-600 dark:text-gray-300">
-                      <svg className="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
+          <AnimatedSection>
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Main Description */}
+              <div className="md:col-span-2 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
+                  <svg className="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  About Me
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-lg">
+                  {aboutMe.description}
+                </p>
               </div>
-              <div>
-                <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-4">Interests</h4>
-                <div className="flex flex-wrap gap-2">
+
+              {/* Interests Section */}
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
+                  <svg className="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                  Interests
+                </h3>
+                <div className="space-y-3">
                   {aboutMe.interests.map((interest, index) => (
-                    <span key={index} className="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm">
-                      {interest}
-                    </span>
+                    <div
+                      key={index}
+                      className="flex items-center bg-blue-50 dark:bg-blue-900/30 p-3 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-800/40 transition-colors duration-300"
+                    >
+                      <span className="text-blue-600 dark:text-blue-400">{interest}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Highlights Section */}
+              <div className="md:col-span-3 bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
+                  <svg className="w-6 h-6 text-blue-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Professional Highlights
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {aboutMe.highlights.map((highlight, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center space-x-3 bg-gray-50 dark:bg-gray-700/50 p-4 rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300"
+                    >
+                      <div className="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center">
+                        <span className="text-blue-600 dark:text-blue-400 font-bold">{index + 1}</span>
+                      </div>
+                      <p className="text-gray-700 dark:text-gray-300">{highlight}</p>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -194,15 +251,42 @@ function Resume() {
 
       case 'education':
         return (
-          <AnimatedSection className="space-y-6">
-            {education.map((edu, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-sm text-blue-600 dark:text-blue-400 mb-2">{edu.year}</div>
-                <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-2">{edu.degree}</h4>
-                <div className="text-gray-600 dark:text-gray-300 mb-2">{edu.school}</div>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">{edu.description}</p>
-              </div>
-            ))}
+          <AnimatedSection>
+            <div className="space-y-8">
+              {education.map((edu, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
+                        {edu.degree}
+                      </h3>
+                      <p className="text-blue-600 dark:text-blue-400 font-medium mb-2">
+                        {edu.school}
+                      </p>
+                    </div>
+                    <span className="text-sm bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-3 py-1 rounded-full">
+                      {edu.year}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {edu.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {edu.achievements.map((achievement, i) => (
+                      <span 
+                        key={i}
+                        className="text-sm bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 px-3 py-1 rounded-full"
+                      >
+                        {achievement}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
           </AnimatedSection>
         );
 
